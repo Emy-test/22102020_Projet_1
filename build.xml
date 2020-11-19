@@ -1,0 +1,22 @@
+<project>
+	<target name="clean">
+		<delete dir="build"/>
+	</target>
+	<target name="compile">
+		<mkdir dir="build"/>
+			<javac destdir="build" srcdir="src;tests" classpath="C:\Users\Administrator\.p2\pool\plugins\org.junit_4.13.0.v20200204-1500.jar"/>
+		
+	</target>
+	<target name="tests" depends="compile">
+		<junit>
+			<classpath>
+				<pathelement location="C:\Users\Administrator\.p2\pool\plugins\org.junit_4.13.0.v20200204-1500.jar"/>
+				<pathelement location="lib\org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
+				<pathelement location="${basedir}\build\classes"/>
+				<pathelement location="C:\Program Files\tomcat\apache-tomcat-8.5.58\lib\servlet-api.jar"/>
+			</classpath>
+			<formatter type="xml"/>
+			<test name="pac1Test.AllTests" outfile="result"/>
+		</junit>
+	</target>
+</project>
